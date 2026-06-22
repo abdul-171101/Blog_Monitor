@@ -1,0 +1,22 @@
+﻿[
+    {
+        "Name":  "analytics",
+        "FullName":  "C:\\BlogMonitorStorage\\analytics"
+    },
+    {
+        "Name":  "logs",
+        "FullName":  "C:\\BlogMonitorStorage\\logs"
+    },
+    {
+        "Name":  "markdown",
+        "FullName":  "C:\\BlogMonitorStorage\\markdown"
+    },
+    {
+        "Name":  "reports",
+        "FullName":  "C:\\BlogMonitorStorage\\reports"
+    },
+    {
+        "Name":  "sitemaps",
+        "FullName":  "C:\\BlogMonitorStorage\\sitemaps"
+    }
+]

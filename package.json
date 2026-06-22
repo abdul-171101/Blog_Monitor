@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "autoprefixer": "^10.5.0",
+    "axios": "^1.18.0",
+    "postcss": "^8.5.15",
+    "react-markdown": "^10.1.0",
+    "react-router-dom": "^7.17.0",
+    "tailwindcss": "^4.3.1"
+  }
+}

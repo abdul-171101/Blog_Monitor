@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="b8996de3-cbf6-4fb1-8688-48fd055d3ec6" name="abdulrahman.sm@UIAP-C-LAP-337 2026-06-15 16:27:30" runUser="UBTIINC\abdulrahman.sm" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-06-15T16:27:30.6641012+05:30" queuing="2026-06-15T16:27:30.6641018+05:30" start="2026-06-15T16:27:28.3493932+05:30" finish="2026-06-15T16:27:31.1557163+05:30" />
+  <TestSettings name="default" id="94856bd2-82c6-4d0f-82cc-0f3a47b90643">
+    <Deployment runDeploymentRoot="abdulrahman.sm_UIAP-C-LAP-337_2026-06-15_16_27_30" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="b6e50370-d1a2-4cf9-9e9e-b9d807a681fd" testId="b82b609d-b2c3-f07b-633d-27c54d05d820" testName="BlogMonitor.Tests.SmokeTests.SqlServerSmokeTest.InsertAndReadClient_ShouldSucceed" computerName="UIAP-C-LAP-337" duration="00:00:01.7118460" startTime="2026-06-15T16:27:29.3578021+05:30" endTime="2026-06-15T16:27:31.0766728+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b6e50370-d1a2-4cf9-9e9e-b9d807a681fd" />
+    <UnitTestResult executionId="987159f0-e55c-4d5a-86b0-95d95133f265" testId="e33e17f9-d851-b111-9604-66651c9ea982" testName="BlogMonitor.Tests.SmokeTests.DuckDbSmokeTest.InsertAndReadDailySummary_ShouldSucceed" computerName="UIAP-C-LAP-337" duration="00:00:00.2535105" startTime="2026-06-15T16:27:29.3589930+05:30" endTime="2026-06-15T16:27:29.6216203+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="987159f0-e55c-4d5a-86b0-95d95133f265" />
+    <UnitTestResult executionId="19e4bfab-f9f4-4c1d-9a65-868749b5ce16" testId="291350bc-c00a-21b6-a0ad-d3923159ce32" testName="BlogMonitor.Tests.UnitTest1.Test1" computerName="UIAP-C-LAP-337" duration="00:00:00.0035548" startTime="2026-06-15T16:27:29.3591393+05:30" endTime="2026-06-15T16:27:29.3702516+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="19e4bfab-f9f4-4c1d-9a65-868749b5ce16" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="BlogMonitor.Tests.UnitTest1.Test1" storage="d:\blogmonitor\blogmonitor.tests\bin\debug\net10.0\win-x64\blogmonitor.tests.dll" id="291350bc-c00a-21b6-a0ad-d3923159ce32">
+      <Execution id="19e4bfab-f9f4-4c1d-9a65-868749b5ce16" />
+      <TestMethod codeBase="d:\BlogMonitor\BlogMonitor.Tests\bin\Debug\net10.0\win-x64\BlogMonitor.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="BlogMonitor.Tests.UnitTest1" name="Test1" />
+    </UnitTest>
+    <UnitTest name="BlogMonitor.Tests.SmokeTests.SqlServerSmokeTest.InsertAndReadClient_ShouldSucceed" storage="d:\blogmonitor\blogmonitor.tests\bin\debug\net10.0\win-x64\blogmonitor.tests.dll" id="b82b609d-b2c3-f07b-633d-27c54d05d820">
+      <Execution id="b6e50370-d1a2-4cf9-9e9e-b9d807a681fd" />
+      <TestMethod codeBase="d:\BlogMonitor\BlogMonitor.Tests\bin\Debug\net10.0\win-x64\BlogMonitor.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="BlogMonitor.Tests.SmokeTests.SqlServerSmokeTest" name="InsertAndReadClient_ShouldSucceed" />
+    </UnitTest>
+    <UnitTest name="BlogMonitor.Tests.SmokeTests.DuckDbSmokeTest.InsertAndReadDailySummary_ShouldSucceed" storage="d:\blogmonitor\blogmonitor.tests\bin\debug\net10.0\win-x64\blogmonitor.tests.dll" id="e33e17f9-d851-b111-9604-66651c9ea982">
+      <Execution id="987159f0-e55c-4d5a-86b0-95d95133f265" />
+      <TestMethod codeBase="d:\BlogMonitor\BlogMonitor.Tests\bin\Debug\net10.0\win-x64\BlogMonitor.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="BlogMonitor.Tests.SmokeTests.DuckDbSmokeTest" name="InsertAndReadDailySummary_ShouldSucceed" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="b82b609d-b2c3-f07b-633d-27c54d05d820" executionId="b6e50370-d1a2-4cf9-9e9e-b9d807a681fd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e33e17f9-d851-b111-9604-66651c9ea982" executionId="987159f0-e55c-4d5a-86b0-95d95133f265" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="291350bc-c00a-21b6-a0ad-d3923159ce32" executionId="19e4bfab-f9f4-4c1d-9a65-868749b5ce16" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="3" executed="3" passed="3" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.5+1b188a7b0a (64-bit .NET 10.0.5)&#xD;
+[xUnit.net 00:00:00.11]   Discovering: BlogMonitor.Tests&#xD;
+[xUnit.net 00:00:00.18]   Discovered:  BlogMonitor.Tests&#xD;
+[xUnit.net 00:00:00.21]   Starting:    BlogMonitor.Tests&#xD;
+[xUnit.net 00:00:01.95]   Finished:    BlogMonitor.Tests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

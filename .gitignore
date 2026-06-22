@@ -1,0 +1,36 @@
+# .NET build folders
+bin/
+obj/
+
+# VS Code settings
+.vscode/
+
+# Visual Studio workspace files
+*.user
+*.vcxproj.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# User secrets
+**/secrets.json
+
+# DuckDB files
+*.duckdb
+
+# Storage folder
+BlogMonitorStorage/
+
+# Environment-specific settings
+appsettings.Development.json
+appsettings.Production.json
+
+# Rider
+.idea/
+
+# Logs
+*.log
+
+# OS generated
+.DS_Store
+Thumbs.db

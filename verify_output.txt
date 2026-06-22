@@ -1,0 +1,39 @@
+﻿=== STEP 1: API Status ===
+[OK] API running
+
+=== STEP 2: Auth ===
+[OK] Auth works. Role=Admin
+
+=== STEP 3: URLs ===
+[OK] URL found. Using ID=2
+
+=== STEP 4: SQL ===
+[OK] SQL Query: ContentHashes count=0
+
+=== STEP 5: MonitoringLogs ===
+[OK] MonitoringLogs count: 76
+
+=== STEP 6: DuckDB ===
+[OK] DuckDB file exists: C:\BlogMonitorStorage\analytics\blogmonitor.duckdb (Size: 12288 bytes)
+
+=== STEP 7: Disk Files ===
+[OK] Sitemap XMLs: 0
+[OK] Markdown files: 0
+[OK] PDF reports: 0
+
+=== STEP 8: Pipeline Trigger ===
+[OK] Pipeline triggered for URL 2
+Waiting 15 seconds for pipeline completion...
+Wait complete
+
+=== STEP 9: Post-Pipeline File Check ===
+[OK] Sitemap XMLs: 0
+[OK] Markdown files: 0
+[OK] PDF reports: 0
+
+=== STEP 10: Report Endpoints ===
+[OK] Logs endpoint OK: 50 entries
+[OK] Weekly reports OK
+
+=== FINAL RESULT ===
+Backend verification complete
