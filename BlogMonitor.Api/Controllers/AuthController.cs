@@ -86,8 +86,8 @@ namespace BlogMonitor.Api.Controllers
             Response.Cookies.Append("refreshToken", refreshToken, new Microsoft.AspNetCore.Http.CookieOptions
             {
                 HttpOnly = true,
-                Secure = Request.IsHttps || Request.Host.Host == "localhost" || Request.Host.Host == "127.0.0.1",
-                SameSite = Microsoft.AspNetCore.Http.SameSiteMode.None,
+                Secure = Request.IsHttps,
+                SameSite = Request.IsHttps ? Microsoft.AspNetCore.Http.SameSiteMode.None : Microsoft.AspNetCore.Http.SameSiteMode.Lax,
                 Expires = DateTimeOffset.UtcNow.AddDays(int.Parse(jwtSection["RefreshTokenExpiryDays"] ?? "7"))
             });
 
@@ -143,8 +143,8 @@ namespace BlogMonitor.Api.Controllers
             Response.Cookies.Append("refreshToken", newRefresh, new Microsoft.AspNetCore.Http.CookieOptions
             {
                 HttpOnly = true,
-                Secure = Request.IsHttps || Request.Host.Host == "localhost" || Request.Host.Host == "127.0.0.1",
-                SameSite = Microsoft.AspNetCore.Http.SameSiteMode.None,
+                Secure = Request.IsHttps,
+                SameSite = Request.IsHttps ? Microsoft.AspNetCore.Http.SameSiteMode.None : Microsoft.AspNetCore.Http.SameSiteMode.Lax,
                 Expires = DateTimeOffset.UtcNow.AddDays(int.Parse(jwtSection["RefreshTokenExpiryDays"] ?? "7"))
             });
 
@@ -174,8 +174,8 @@ namespace BlogMonitor.Api.Controllers
             {
                 Expires = DateTimeOffset.UnixEpoch,
                 HttpOnly = true,
-                Secure = true,
-                SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Strict
+                Secure = Request.IsHttps,
+                SameSite = Request.IsHttps ? Microsoft.AspNetCore.Http.SameSiteMode.None : Microsoft.AspNetCore.Http.SameSiteMode.Lax
             });
 
             return Ok();

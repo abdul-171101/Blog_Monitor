@@ -159,11 +159,11 @@ namespace BlogMonitor.Infrastructure.Services
                 else status = "NO_CHANGE";
 
                 // check initial run
-                var existingCount = await _duckReport.GetDailySummaryAsync(clientUrlId, DateOnly.FromDateTime(DateTime.UtcNow));
-                if (existingCount == null)
-                {
-                    status = "INITIAL_RUN";
-                }
+                var anyPrevious = await _db.ContentHashes.AnyAsync(h => h.ClientUrlId == clientUrlId);
+if (!anyPrevious)
+{
+    status = "INITIAL_RUN";
+}
 
                 var daily = new DailySummaryRecord
                 {

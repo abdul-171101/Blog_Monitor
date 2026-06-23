@@ -22,6 +22,12 @@ const UrlManager: React.FC = () => {
   const { authState } = useAuth()
   const navigate = useNavigate()
 
+  // All hooks must be declared before any early returns
+  const [isRegisterOpen, setRegisterOpen] = useState(false)
+  const [registerForm, setRegisterForm] = useState<RegisterUrlRequest>({ clientId: 0, url: '' })
+  const [perRowLoading, setPerRowLoading] = useState<Record<string, boolean>>({})
+  const [confirm, setConfirm] = useState<{ isOpen: boolean; url?: UrlSummaryResponse }>({ isOpen: false })
+
   useEffect(() => {
     document.title = 'URL Manager | Blog Monitor'
   }, [])
@@ -31,11 +37,6 @@ const UrlManager: React.FC = () => {
 
   const urls: UrlSummaryResponse[] = data?.urls ?? []
   const clients = data?.clients ?? []
-
-  const [isRegisterOpen, setRegisterOpen] = useState(false)
-  const [registerForm, setRegisterForm] = useState<RegisterUrlRequest>({ clientId: 0, url: '' })
-  const [perRowLoading, setPerRowLoading] = useState<Record<string, boolean>>({})
-  const [confirm, setConfirm] = useState<{ isOpen: boolean; url?: UrlSummaryResponse }>({ isOpen: false })
 
   const handleRunNow = async (r: UrlSummaryResponse) => {
     setPerRowLoading((s) => ({ ...s, [r.id]: true }))
@@ -92,13 +93,23 @@ const UrlManager: React.FC = () => {
     <div>
       <PageHeader title="URL Manager">
         <div>
-          {authState.role === 'Admin' && <button onClick={() => setRegisterOpen(true)} className="bg-blue-600 text-white px-3 py-2 rounded">Register URL</button>}
+          {authState.role === 'Admin' && (
+            <button onClick={() => setRegisterOpen(true)} className="bg-blue-600 text-white px-3 py-2 rounded">
+              Register URL
+            </button>
+          )}
         </div>
       </PageHeader>
 
       <DataTable columns={columns} rows={urls} emptyMessage="No monitored URLs yet" />
 
-      <ConfirmDialog isOpen={confirm.isOpen} title="Stop URL" message={`Stop monitoring ${confirm.url?.url}?`} onCancel={() => setConfirm({ isOpen: false })} onConfirm={() => handleStop(confirm.url!)} />
+      <ConfirmDialog
+        isOpen={confirm.isOpen}
+        title="Stop URL"
+        message={`Stop monitoring ${confirm.url?.url}?`}
+        onCancel={() => setConfirm({ isOpen: false })}
+        onConfirm={() => handleStop(confirm.url!)}
+      />
 
       {isRegisterOpen && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50" onClick={() => setRegisterOpen(false)}>
@@ -107,7 +118,11 @@ const UrlManager: React.FC = () => {
             <div className="space-y-3">
               <div>
                 <label className="block text-sm">Client</label>
-                <select className="w-full border px-3 py-2 rounded" value={registerForm.clientId || ''} onChange={(e) => setRegisterForm({ ...registerForm, clientId: Number(e.target.value) })}>
+                <select
+                  className="w-full border px-3 py-2 rounded"
+                  value={registerForm.clientId || ''}
+                  onChange={(e) => setRegisterForm({ ...registerForm, clientId: Number(e.target.value) })}
+                >
                   <option value="">Select client</option>
                   {clients.map((c: any) => (
                     <option key={c.id} value={c.id}>{c.fullName}</option>
@@ -116,7 +131,11 @@ const UrlManager: React.FC = () => {
               </div>
               <div>
                 <label className="block text-sm">URL</label>
-                <input className="w-full border px-3 py-2 rounded" value={registerForm.url} onChange={(e) => setRegisterForm({ ...registerForm, url: e.target.value })} />
+                <input
+                  className="w-full border px-3 py-2 rounded"
+                  value={registerForm.url}
+                  onChange={(e) => setRegisterForm({ ...registerForm, url: e.target.value })}
+                />
               </div>
               <div className="flex justify-end gap-2 mt-4">
                 <button onClick={() => setRegisterOpen(false)} className="px-4 py-2 rounded bg-gray-100">Cancel</button>

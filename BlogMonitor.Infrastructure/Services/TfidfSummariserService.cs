@@ -81,7 +81,7 @@ namespace BlogMonitor.Infrastructure.Services
                 var ranked = filtered.OrderByDescending(i => scores[i]).ToList();
                 int minS = int.TryParse(_config["Summarizer:MinSentences"], out var mn) ? mn : 3;
                 int maxS = int.TryParse(_config["Summarizer:MaxSentences"], out var mx) ? mx : 7;
-                int takeN = Math.Clamp(minS, minS, maxS);
+                int takeN = Math.Clamp(ranked.Count, minS, maxS);
                 takeN = Math.Min(takeN, ranked.Count);
                 var top = ranked.Take(takeN).OrderBy(i => i).Select(i => sentences[i].Trim());
                 return string.Join(" ", top);

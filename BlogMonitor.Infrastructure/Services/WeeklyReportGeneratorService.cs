@@ -46,10 +46,10 @@ namespace BlogMonitor.Infrastructure.Services
                 var entries = new List<DailyEntry>();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT summary_date, status, pages_changed, pages_no_change, pages_failed, compiled_summary FROM daily_summaries WHERE client_url_id = ? AND summary_date >= ? AND summary_date <= ? ORDER BY summary_date ASC;";
-                    var p = cmd.CreateParameter(); p.ParameterName = "@client_url_id"; p.Value = clientUrlId; p.DbType = System.Data.DbType.Int32; cmd.Parameters.Add(p);
-                    p = cmd.CreateParameter(); p.ParameterName = "@start"; p.Value = cycleStartDate.ToString("yyyy-MM-dd"); p.DbType = System.Data.DbType.Date; cmd.Parameters.Add(p);
-                    p = cmd.CreateParameter(); p.ParameterName = "@end"; p.Value = cycleEndDate.ToString("yyyy-MM-dd"); p.DbType = System.Data.DbType.Date; cmd.Parameters.Add(p);
+                    cmd.CommandText = @"SELECT summary_date, status, pages_changed, pages_no_change, pages_failed, compiled_summary FROM daily_summaries WHERE client_url_id = $1 AND summary_date >= $2 AND summary_date <= $3 ORDER BY summary_date ASC;";
+var p = cmd.CreateParameter(); p.Value = clientUrlId; p.DbType = System.Data.DbType.Int32; cmd.Parameters.Add(p);
+p = cmd.CreateParameter(); p.Value = cycleStartDate.ToString("yyyy-MM-dd"); p.DbType = System.Data.DbType.String; cmd.Parameters.Add(p);
+p = cmd.CreateParameter(); p.Value = cycleEndDate.ToString("yyyy-MM-dd"); p.DbType = System.Data.DbType.String; cmd.Parameters.Add(p);
                     using var rdr = cmd.ExecuteReader();
                     while (rdr.Read())
                     {

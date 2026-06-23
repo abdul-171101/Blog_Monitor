@@ -4,7 +4,6 @@ using BlogMonitor.Core.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-// using Microsoft.OpenApi.Models; // simplified to avoid dependency resolution issues
 using System.Text;
 using Hangfire;
 using Hangfire.SqlServer;
@@ -25,11 +24,13 @@ builder.Services.AddCors(options =>
     {
         policy.WithOrigins(
                 "http://localhost:5173",
-    "http://127.0.0.1:5173",
-    "http://localhost:5174",
-    "http://127.0.0.1:5174",
-    "http://localhost:5175",
-    "http://127.0.0.1:5175"
+                "http://127.0.0.1:5173",
+                "http://localhost:5174",
+                "http://127.0.0.1:5174",
+                "http://localhost:5175",
+                "http://127.0.0.1:5175",
+                "http://localhost:5176",
+                "http://127.0.0.1:5176"
                 )
             .AllowAnyHeader()
             .AllowAnyMethod()
@@ -91,7 +92,6 @@ builder.Services.AddHostedService<BlogMonitor.Infrastructure.Data.DatabaseInitia
 
 // Register pipeline and supporting services
 builder.Services.AddScoped<ISitemapDiscoveryService, SitemapDiscoveryService>();
-// SitemapDownloaderService registration removed temporarily to avoid interface resolution build issues
 builder.Services.AddScoped<SitemapDownloaderService>();
 builder.Services.AddScoped<ITrackBCrawlerService, TrackBCrawlerService>();
 builder.Services.AddScoped<IPlaywrightScraperService, PlaywrightScraperService>();
@@ -125,7 +125,15 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseRouting();
-app.UseHttpsRedirection();
+
+// HTTPS redirection is intentionally disabled for local development.
+// The frontend calls the plain HTTP endpoint on port 5271. If HTTPS
+// redirection is enabled, every request gets a 307 redirect to the
+// HTTPS port, which breaks CORS preflight and credentialed requests
+// from the browser. Re-enable only once frontend and backend both
+// run over HTTPS with a trusted local dev certificate.
+// app.UseHttpsRedirection();
+
 app.UseCors("DefaultCorsPolicy");
 app.UseAuthentication();
 app.UseAuthorization();
@@ -153,27 +161,4 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast(
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        )).ToArray();
-
-    return forecast;
-})
-.WithName("GetWeatherForecast");
-
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
